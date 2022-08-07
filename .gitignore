@@ -38,6 +38,7 @@
 
 # Wii U Build files
 Gfx-General/Build/*
+Controller-Test/Build/*
 
 # Python Byte-compiled / optimized / DLL files
 __pycache__/
