@@ -17,7 +17,7 @@ include $(DEVKITPRO)/wut/share/wut_rules
 # DATA is a list of directories containing data files
 # INCLUDES is a list of directories containing header files
 #-------------------------------------------------------------------------------
-TARGET		:=	CS-Game-Debug
+TARGET		:=	Gfx-General-Debug
 BUILD		:=	build
 SOURCES		:=	../../rio/src \
 				../../rio/src/container \
