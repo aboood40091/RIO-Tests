@@ -37,8 +37,8 @@
 *.cbp
 
 # Wii U Build files
-Gfx-General/Build/*
-Controller-Test/Build/*
+*.lst
+*.map
 
 # Python Byte-compiled / optimized / DLL files
 __pycache__/
