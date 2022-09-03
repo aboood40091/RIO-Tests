@@ -1,0 +1,42 @@
+#include <gpu/rio_Shader.h>
+#include <gpu/rio_VertexArray.h>
+#include <math/rio_Vector.h>
+#include <task/rio_Task.h>
+
+class RootTask : public rio::ITask
+{
+public:
+    RootTask();
+
+private:
+    void prepare_() override;
+    void calc_() override;
+    void exit_() override;
+
+private:
+    struct Vertex
+    {
+        rio::Vector3f pos;
+    };
+
+    rio::Shader         mShader;
+
+    Vertex*             mpVBData;
+    u16*                mpIBData;
+
+    rio::VertexBuffer   mVertexBuffer;
+    rio::VertexStream   mPosStream;
+    rio::VertexArray    mVertexArray;
+
+    // Size of a single vertex (also the stride of the vertex buffer)
+    static constexpr size_t cVtxElemSize = sizeof(Vertex);
+    // Number of vertices
+    static constexpr s32 cVtxNum = 4;
+    // Size of vertex buffer
+    static constexpr size_t cVBDataSize = cVtxElemSize * cVtxNum;
+
+    // Number of indices to draw
+    static constexpr s32 cIdxNum = 6;
+    // Size of index buffer
+    static constexpr size_t cIBDataSize = sizeof(u16) * cIdxNum;
+};
