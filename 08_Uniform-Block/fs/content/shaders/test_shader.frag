@@ -1,16 +1,13 @@
-#version 420 core               // Windows
+#version 330 core
 
-//#version 330 core               // Cafe
-//#extension GL_EXT_Cafe : enable // ....
-
-layout(std140, binding = 1)
+layout(std140)
 uniform cViewBlock
 {
     vec3 viewPos;
     vec4 viewProj[4];
 };
 
-layout(std140, binding = 3)
+layout(std140)
 uniform cLightBlock
 {
     vec3 lightColor;

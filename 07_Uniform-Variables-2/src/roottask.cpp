@@ -106,7 +106,8 @@ void RootTask::prepare_()
 
     // Disable mip filter as our textures don't have mipmaps
     // (Not doing this results in a black screen on my PC with OpenGL, however GX2 seems to not care)
-    mTextureSampler.setMipFilter(rio::TEX_MIP_FILTER_MODE_NONE);
+  //mTextureSampler.setMipFilter(rio::TEX_MIP_FILTER_MODE_NONE);
+    // (Note: Ignore the above, it was fixed as of 19/09/2022.)
 
     // Set projection matrix
     {

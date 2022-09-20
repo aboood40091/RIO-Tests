@@ -78,6 +78,12 @@ void RootTask::prepare_()
     // Load Shader
     mShader.load("test_shader");
 
+    // Get uniform blocks' indices
+    mViewBlockIdx.vs = mShader.getVertexUniformBlockIndex("cViewBlock");
+    mViewBlockIdx.fs = mShader.getFragmentUniformBlockIndex("cViewBlock");
+    mLightBlockIdx = mShader.getFragmentUniformBlockIndex("cLightBlock");
+    mModelBlockIdx = mShader.getVertexUniformBlockIndex("cModelBlock");
+
     // Set the vertex buffer instance's stride (must be done before setting the instance's data)
     mVertexBuffer.setStride(cVtxElemSize);
     // Set the vertex buffer instance's data and flush/invalidate its cache (now, as it won't be modified later)
@@ -110,7 +116,8 @@ void RootTask::prepare_()
 
     // Disable mip filter as our textures don't have mipmaps
     // (Not doing this results in a black screen on my PC with OpenGL, however GX2 seems to not care)
-    mTextureSampler.setMipFilter(rio::TEX_MIP_FILTER_MODE_NONE);
+  //mTextureSampler.setMipFilter(rio::TEX_MIP_FILTER_MODE_NONE);
+    // (Note: Ignore the above, it was fixed as of 19/09/2022.)
 
     // Set projection matrix
     {
@@ -133,7 +140,7 @@ void RootTask::prepare_()
     }
 
     // Create view uniform block instance
-    mpViewUniformBlock = new rio::UniformBlock(rio::UniformBlock::STAGE_ALL, 1);
+    mpViewUniformBlock = new rio::UniformBlock(rio::UniformBlock::STAGE_ALL, mViewBlockIdx.vs, mViewBlockIdx.fs);
     // Set base data for view uniform block
     mpViewUniformBlock->setData(&sViewBlock, sizeof(ViewBlock));
 
@@ -151,7 +158,7 @@ void RootTask::prepare_()
         sModelBlock[i].normal_mtx.setInverseTranspose(sModelBlock[i].model_mtx);
 
         // Create model uniform block instance
-        mpModelUniformBlock[i] = new rio::UniformBlock(rio::UniformBlock::STAGE_VERTEX_SHADER, 2);
+        mpModelUniformBlock[i] = new rio::UniformBlock(rio::UniformBlock::STAGE_VERTEX_SHADER, mModelBlockIdx);
         // Set model uniform block data and invalidate cache now as it won't be modified later
         mpModelUniformBlock[i]->setDataInvalidate(&sModelBlock[i], sizeof(ModelBlock));
     }
@@ -162,7 +169,7 @@ void RootTask::prepare_()
     mLightPos.set(0.0f, 0.0f, 2.0f);
 
     // Create light uniform block instance
-    mpLightUniformBlock = new rio::UniformBlock(rio::UniformBlock::STAGE_FRAGMENT_SHADER, 3);
+    mpLightUniformBlock = new rio::UniformBlock(rio::UniformBlock::STAGE_FRAGMENT_SHADER, mLightBlockIdx);
     // Set light uniform block data and invalidate cache now as it won't be modified later
     sLightBlock.light_color = mLightColor;
     sLightBlock.light_pos = mLightPos;

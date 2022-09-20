@@ -75,7 +75,7 @@ void RootTask::prepare_()
     mLayers[LAYER_FRONT].ptr->setProjection(&mFrontProjection);
 
     // Create view uniform block instance
-    mpViewUniformBlock = new rio::UniformBlock(rio::UniformBlock::STAGE_ALL, 1);
+    mpViewUniformBlock = new rio::UniformBlock();
     // Set base data for view uniform block
     mpViewUniformBlock->setData(&sViewBlock, sizeof(Model::ViewBlock));
 
@@ -89,7 +89,7 @@ void RootTask::prepare_()
     mLightPos.set(0.0f, 0.0f, 2.0f);
 
     // Create light uniform block instance
-    mpLightUniformBlock = new rio::UniformBlock(rio::UniformBlock::STAGE_FRAGMENT_SHADER, 3);
+    mpLightUniformBlock = new rio::UniformBlock();
     // Set light uniform block data and invalidate cache now as it won't be modified
     sLightBlock.light_color = mLightColor;
     sLightBlock.light_pos = mLightPos;
@@ -112,7 +112,7 @@ void RootTask::prepare_()
         );
 
         // Create model instance
-        mpModel[i] = new Model(coin_res_mdl, rio::UniformBlock::STAGE_VERTEX_SHADER, 2);
+        mpModel[i] = new Model(coin_res_mdl, "cViewBlock", "cLightBlock", "cModelBlock");
         // Set model's local-to-world matrix
         mpModel[i]->setModelWorldMtx(model_mtx);
     }

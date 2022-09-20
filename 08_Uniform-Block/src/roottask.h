@@ -72,6 +72,13 @@ private:
     rio::UniformBlock*  mpViewUniformBlock;
     rio::UniformBlock*  mpLightUniformBlock;
 
+    struct
+    {
+        s32 vs;
+        s32 fs;
+    }                   mViewBlockIdx;
+    s32                 mLightBlockIdx;
+
     static ViewBlock    sViewBlock;
     static LightBlock   sLightBlock;
 
@@ -89,6 +96,7 @@ private:
     // Cube positions
     static const rio::Vector3f cCubePos[cCubeNum];
 
-    rio::UniformBlock*              mpModelUniformBlock[cCubeNum];
-    static ModelBlock               sModelBlock[cCubeNum];
+    rio::UniformBlock*  mpModelUniformBlock[cCubeNum];
+    s32                 mModelBlockIdx;
+    static ModelBlock   sModelBlock[cCubeNum];
 };
