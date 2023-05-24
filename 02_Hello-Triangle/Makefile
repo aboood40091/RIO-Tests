@@ -20,6 +20,7 @@ include $(DEVKITPRO)/wut/share/wut_rules
 TARGET		:=	Test-Debug
 BUILD		:=	build
 SOURCES		:=	../../rio/src \
+				../../rio/src/audio \
 				../../rio/src/container \
 				../../rio/src/controller \
 				../../rio/src/controller/cafe \
@@ -33,6 +34,7 @@ SOURCES		:=	../../rio/src \
 				../../rio/src/gpu \
 				../../rio/src/gpu/cafe \
 				../../rio/src/math \
+				../../rio/src/math/impl \
 				../../rio/src/task \
 				src
 DATA		:=	data
@@ -61,7 +63,7 @@ LIBS	:= -lwut
 # list of directories containing libraries, this must be the top level
 # containing include and lib
 #-------------------------------------------------------------------------------
-LIBDIRS	:= $(PORTLIBS) $(WUT_ROOT)
+LIBDIRS	:= $(WUT_ROOT)
 
 
 #-------------------------------------------------------------------------------

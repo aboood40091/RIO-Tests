@@ -6,7 +6,7 @@ int main()
 {
     // Initialize RIO with root task
     if (!rio::Initialize<RootTask>())
-        return false;
+        return -1;
 
     // Main loop
     rio::EnterMainLoop();

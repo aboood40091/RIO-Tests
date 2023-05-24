@@ -57,7 +57,7 @@ void RootTask::prepare_()
 
     // Create layer
     mLayer.it = rio::lyr::Renderer::instance()->addLayer("Layer");
-    mLayer.ptr = &const_cast<rio::lyr::Layer&>(*(mLayer.it));
+    mLayer.ptr = rio::lyr::Layer::peelIterator(mLayer.it);
     // Clear color buffer before the layer is drawn
     mLayer.ptr->setClearColor({ 0.25f, 0.5f, 0.5f, 1.0f });
     // Clear depth-stencil buffer before the layer is drawn

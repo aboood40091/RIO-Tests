@@ -39,7 +39,7 @@ void RootTask::prepare_()
     mLayers[LAYER_FRONT].it = rio::lyr::Renderer::instance()->addLayer("front", LAYER_FRONT);
 
     // Initialize back layer
-    mLayers[LAYER_BACK].ptr = &const_cast<rio::lyr::Layer&>(*(mLayers[LAYER_BACK].it));
+    mLayers[LAYER_BACK].ptr = rio::lyr::Layer::peelIterator(mLayers[LAYER_BACK].it);
     // Clear color buffer before drawing layer
     mLayers[LAYER_BACK].ptr->setClearColor({ 0.25f, 0.5f, 0.75f, 1.0f });
     // Clear depth-stencil buffer before drawing layer
@@ -49,7 +49,7 @@ void RootTask::prepare_()
     mLayers[LAYER_BACK].ptr->addDrawMethod(0, rio::lyr::DrawMethod(this, &RootTask::drawBack));
 
     // Initialize front layer
-    mLayers[LAYER_FRONT].ptr = &const_cast<rio::lyr::Layer&>(*(mLayers[LAYER_FRONT].it));
+    mLayers[LAYER_FRONT].ptr = rio::lyr::Layer::peelIterator(mLayers[LAYER_FRONT].it);
     // Clear depth buffer before drawing layer
     mLayers[LAYER_FRONT].ptr->setClearDepth();
     // Add render step and draw method
