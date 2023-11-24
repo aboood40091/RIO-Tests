@@ -19,26 +19,26 @@ include $(DEVKITPRO)/wut/share/wut_rules
 #-------------------------------------------------------------------------------
 TARGET		:=	Test-Debug
 BUILD		:=	build
-SOURCES		:=	../../rio/src \
-				../../rio/src/audio \
-				../../rio/src/container \
-				../../rio/src/controller \
-				../../rio/src/controller/cafe \
-				../../rio/src/filedevice \
-				../../rio/src/filedevice/cafe \
-				../../rio/src/gfx \
-				../../rio/src/gfx/cafe \
-				../../rio/src/gfx/lyr \
-				../../rio/src/gfx/mdl \
-				../../rio/src/gfx/mdl/res \
-				../../rio/src/gpu \
-				../../rio/src/gpu/cafe \
-				../../rio/src/math \
-				../../rio/src/math/impl \
-				../../rio/src/task \
+SOURCES		:=	../lib/rio/src \
+				../lib/rio/src/audio \
+				../lib/rio/src/container \
+				../lib/rio/src/controller \
+				../lib/rio/src/controller/cafe \
+				../lib/rio/src/filedevice \
+				../lib/rio/src/filedevice/cafe \
+				../lib/rio/src/gfx \
+				../lib/rio/src/gfx/cafe \
+				../lib/rio/src/gfx/lyr \
+				../lib/rio/src/gfx/mdl \
+				../lib/rio/src/gfx/mdl/res \
+				../lib/rio/src/gpu \
+				../lib/rio/src/gpu/cafe \
+				../lib/rio/src/math \
+				../lib/rio/src/math/impl \
+				../lib/rio/src/task \
 				src
 DATA		:=	data
-INCLUDES	:=	../../rio/include
+INCLUDES	:=	../lib/rio/include
 
 #-------------------------------------------------------------------------------
 # options for code generation

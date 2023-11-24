@@ -2,3 +2,6 @@
 	path = lib/imgui
 	url = https://github.com/aboood40091/imgui.git
 	branch = rio_docking
+[submodule "lib/rio"]
+	path = lib/rio
+	url = https://github.com/aboood40091/rio.git
