@@ -1,4 +1,4 @@
-MAKEFILES	:=	$(shell find . -mindepth 2 -name Makefile)
+MAKEFILES	:=	$(shell find . -mindepth 2 -path "./lib/*" -prune -o -name Makefile -print)
 
 DATESTRING	:=	$(shell date +%Y)$(shell date +%m)$(shell date +%d)
 

@@ -52,7 +52,7 @@ CFLAGS	+=	$(INCLUDE) -D__WIIU__ -D__WUT__ \
 			-DRIO_DEBUG \
 			-DRIO_CAFE_MAIN_FILE_DEVICE_AS_CONTENT
 
-CXXFLAGS	:= $(CFLAGS) -std=gnu++17
+CXXFLAGS	:= $(CFLAGS) -std=c++17
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-g $(ARCH) $(RPXSPECS) -Wl,-Map,$(notdir $*.map)
